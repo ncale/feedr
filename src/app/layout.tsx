@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Link from 'next/link';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +17,24 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        
+        {/* Side Bar */}
+        <header>
+          <h1><Link href='/'>F E E D caster</Link></h1>
+          <ul>
+            <li><Link href='/~/create'>create</Link></li>
+            <li><Link href='/~/explore'>explore</Link></li>
+            <li><Link href='/ncale.eth/'>my feeds</Link></li>
+          </ul>
+        </header>
+
+        {/* Main Page */}
+        <div>
+          {children}
+        </div>
+
+      </body>
     </html>
   );
 }
