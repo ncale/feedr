@@ -17,23 +17,28 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${inter.className} box-border h-screen min-h-screen`}>
+        <div className="flex justify-center items-start">
+          
+          {/* Side Bar */}
+          <nav className="p-6 pt-16 w-52 h-screen">
+            <h1 className="text-xl font-bold"><Link href='/'>F E E D caster</Link></h1>
+            <ul>
+              <li><Link href='/'>home</Link></li>
+              <li><Link href='/profile/feeds'>feeds</Link></li>
+              <li className="ml-4"><Link href='/profile/feeds'>my feeds</Link></li>
+              <li className="ml-4"><Link href='/~/create'>create</Link></li>
+              <li className="ml-4"><Link href='/~/explore'>explore</Link></li>
+              <li><Link href='/profile'>profile</Link></li>
+            </ul>
+          </nav>
+
+          {/* Main Page */}
+          <div className="p-6 pt-16 w-8/12 h-screen">
+            {children}
+          </div>
         
-        {/* Side Bar */}
-        <header>
-          <h1><Link href='/'>F E E D caster</Link></h1>
-          <ul>
-            <li><Link href='/~/create'>create</Link></li>
-            <li><Link href='/~/explore'>explore</Link></li>
-            <li><Link href='/ncale.eth/'>my feeds</Link></li>
-          </ul>
-        </header>
-
-        {/* Main Page */}
-        <div>
-          {children}
         </div>
-
       </body>
     </html>
   );
