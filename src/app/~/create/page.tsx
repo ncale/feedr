@@ -1,5 +1,3 @@
-'use client';
-
 export default function CreatePage() {
 
   // Function to submit a new feed
@@ -30,14 +28,9 @@ export default function CreatePage() {
     }
   };
 
-  function handleClick() {
-    console.log("hello");
-  };
-
   return (
     <main className="">
       <h1>C R E A T E page</h1>
-      <button onClick={handleClick}>click here to create a new feed</button>
     </main>
   );
 }
