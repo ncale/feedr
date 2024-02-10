@@ -10,11 +10,20 @@ const feedSchema = new mongoose.Schema({
 		required: true,
 		min: 1,
 	},
+	isDefault: {
+		type: Boolean,
+		default: false,
+		// only one default per FID
+	},
 	isPrivate: {
 		type: Boolean,
 		default: false,
 	},
-	channels: [String]
+	channels: [String],
+	numConnections: {
+		type: Number,
+		min: 1,
+	}
 });
 
 type Feed = mongoose.InferSchemaType<typeof feedSchema>
