@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Link from 'next/link';
+import NavBar from "@/components/NavBar";
 
 import '@farcaster/auth-kit/styles.css';
 import { SignInButton, AuthKitProvider } from '@farcaster/auth-kit';
@@ -32,15 +33,7 @@ export default function RootLayout({
             
             {/* Side Bar */}
             <nav className="p-6 pt-16 w-52 h-screen">
-              <h1 className="text-xl font-bold"><Link href='/'>F E E D caster</Link></h1>
-              <ul>
-                <li><Link href='/'>home</Link></li>
-                <li><Link href='/profile/feeds'>feeds</Link></li>
-                <li className="ml-4"><Link href='/profile/feeds'>my feeds</Link></li>
-                <li className="ml-4"><Link href='/~/create'>create</Link></li>
-                <li className="ml-4"><Link href='/~/explore'>explore</Link></li>
-                <li><Link href='/profile'>profile</Link></li>
-              </ul>
+              <NavBar />
             </nav>
 
             {/* Main Page */}
