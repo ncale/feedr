@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import NavMenu from "@/components/NavMenu";
-import LoginButton from "@/components/LoginButton";
+import AuthButton from "@/components/AuthButton";
 import AuthKitProvider from '@/components/AuthKitProvider';
 import { getServerSession } from "next-auth";
 import SessionProvider from '@/components/SessionProvider';
@@ -45,7 +45,7 @@ export default async function RootLayout({
 
             {/* Right Side Bar */}
             <div className="p-2">
-              
+              <AuthButton />
             </div>
 
           </div>

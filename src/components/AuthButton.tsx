@@ -3,10 +3,10 @@
 import '@farcaster/auth-kit/styles.css';
 import { SignInButton, StatusAPIResponse } from '@farcaster/auth-kit';
 import { signIn, signOut, getCsrfToken } from "next-auth/react";
-
+import { useProfile } from '@farcaster/auth-kit';
 import { useCallback, useState } from "react";
 
-export default function LoginButton() {
+export default function AuthButton() {
 	
 	const [error, setError] = useState(false);
 
@@ -28,15 +28,20 @@ export default function LoginButton() {
     },
     [signIn]
   );
-	
-	return (
+
+  const {
+    isAuthenticated,
+    profile: { username, fid },
+  } = useProfile();
+
+  return isAuthenticated ? (<></>) : (
 		<>
-      <SignInButton 
+			<SignInButton 
         nonce={getNonce}
         onSuccess={handleSuccess}
         onError={() => setError(true)}
         onSignOut={() => signOut() }
       />
 		</>
-	);
+	)
 };
