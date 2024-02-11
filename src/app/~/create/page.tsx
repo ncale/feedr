@@ -1,3 +1,5 @@
+import CreateFeedForm from "@/components/CreateFeedForm";
+
 export default function CreatePage() {
 
   // Function to submit a new feed
@@ -33,8 +35,8 @@ export default function CreatePage() {
       <div className="p-2 border-b-2 border-black border-opacity-50">
         <h1 className="text-lg font-bold">Create</h1>
       </div>
-      <div>
-
+      <div className="m-2">
+        <CreateFeedForm />
       </div>
     </div>
   );
