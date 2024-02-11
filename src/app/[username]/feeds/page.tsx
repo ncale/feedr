@@ -1,3 +1,5 @@
+import FeedBlock from "@/components/FeedBlock";
+import Link from "next/link";
 
 async function getFeeds() {
   try {
@@ -23,7 +25,8 @@ export default async function MyFeedsPage({ params }: {
         <h1 className="text-lg font-bold">Feeds</h1>
       </div>
       <div>
-
+        <FeedBlock name='Unfiltered' desc='A simple, unfiltered feed of Farcaster casts from accounts you follow' />
+        <div className="ml-4 mt-1 text-sm"><Link href='/~/create'>+ Create a new feed</Link></div>
       </div>
     </div>
   );
