@@ -1,4 +1,5 @@
 import CreateFeedForm from "@/components/CreateFeedForm";
+import PageHeader from "@/components/PageHeader";
 
 export default function CreatePage() {
 
@@ -32,9 +33,7 @@ export default function CreatePage() {
 
   return (
     <div className="flex flex-col">
-      <div className="p-2 border-b-2 border-black border-opacity-50">
-        <h1 className="text-lg font-bold">Create</h1>
-      </div>
+      <PageHeader pageTitle="Create" isProfile={true} />
       <div className="m-2">
         <CreateFeedForm />
       </div>
