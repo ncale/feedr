@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import NavBar from "@/components/NavBar";
+import NavMenu from "@/components/NavMenu";
 import LoginButton from "@/components/LoginButton";
 import AuthKitProvider from '@/components/AuthKitProvider';
 import { getServerSession } from "next-auth";
@@ -30,12 +30,12 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} box-border h-screen min-h-screen`}>
-        <SessionProvider><AuthKitProvider config={config}>
+        <SessionProvider session={session}><AuthKitProvider config={config}>
           <div className="flex justify-center items-start">
             
             {/* Side Bar */}
             <nav className="p-2 px-4 w-52 h-screen">
-              <NavBar />
+              <NavMenu />
             </nav>
 
             {/* Main Page */}
