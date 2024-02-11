@@ -29,8 +29,13 @@ export default function CreatePage() {
   };
 
   return (
-    <main className="">
-      <h1>C R E A T E page</h1>
-    </main>
+    <div className="flex flex-col">
+      <div className="p-2 border-b-2 border-black border-opacity-50">
+        <h1 className="text-lg font-bold">Create</h1>
+      </div>
+      <div>
+
+      </div>
+    </div>
   );
 }

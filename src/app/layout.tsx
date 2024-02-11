@@ -34,18 +34,22 @@ export default async function RootLayout({
           <div className="flex justify-center items-start">
             
             {/* Side Bar */}
-            <nav className="p-2 px-4 w-52 h-screen">
-              <NavMenu />
+            <nav className="w-40 h-screen">
+              <div className="p-2 px-4">
+                <NavMenu />
+              </div>
             </nav>
 
             {/* Main Page */}
-            <div className="p-2 w-5/12 h-screen border-x-2 border-black">
+            <main className="w-5/12 h-screen border-x-2 border-black border-opacity-50">
               {children}
-            </div>
+            </main>
 
             {/* Right Side Bar */}
-            <div className="p-2">
-              <AuthButton />
+            <div className="w-40">
+              <div className="p-2">
+                <AuthButton />
+              </div>
             </div>
 
           </div>

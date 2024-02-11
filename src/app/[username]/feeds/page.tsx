@@ -18,10 +18,14 @@ export default async function MyFeedsPage({ params }: {
   const feeds = await getFeeds();
   
   return (
-    <main className="">
-      <h1>{`${params.username}'s Feeds`}</h1>
+    <div className="flex flex-col">
+      <div className="p-2 border-b-2 border-black border-opacity-50">
+        <h1 className="text-lg font-bold">Feeds</h1>
+      </div>
+      <div>
 
-    </main>
+      </div>
+    </div>
   );
 }
   
