@@ -1,7 +1,9 @@
+import LoginButton from "@/components/LoginButton";
+
 export default function Home() {
   return (
-    <main className="">
-      <h1>Default home feed</h1>
+    <main className="flex justify-center pt-10">
+      <LoginButton />
     </main>
   );
 }

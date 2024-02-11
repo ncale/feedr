@@ -1,8 +1,8 @@
 'use client';
 
 import '@farcaster/auth-kit/styles.css';
-import { AuthKitProvider, SignInButton, StatusAPIResponse } from '@farcaster/auth-kit';
-import { useSession, signIn, signOut, getCsrfToken } from "next-auth/react";
+import { SignInButton, StatusAPIResponse } from '@farcaster/auth-kit';
+import { signIn, signOut, getCsrfToken } from "next-auth/react";
 
 import { useCallback, useState } from "react";
 
@@ -31,14 +31,12 @@ export default function LoginButton() {
 	
 	return (
 		<>
-			<AuthKitProvider>
-				<SignInButton 
-					nonce={getNonce}
-					onSuccess={handleSuccess}
-					onError={() => setError(true)}
-					onSignOut={() => signOut() }
-				/>
-			</AuthKitProvider>
+      <SignInButton 
+        nonce={getNonce}
+        onSuccess={handleSuccess}
+        onError={() => setError(true)}
+        onSignOut={() => signOut() }
+      />
 		</>
 	);
 };
