@@ -26,6 +26,6 @@ const feedSchema = new mongoose.Schema({
 	}
 });
 
-type Feed = mongoose.InferSchemaType<typeof feedSchema>
+export type Feed = mongoose.InferSchemaType<typeof feedSchema>
 
 export default mongoose.model<Feed>('Feed', feedSchema);

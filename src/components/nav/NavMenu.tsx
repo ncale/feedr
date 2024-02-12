@@ -5,7 +5,7 @@ export default async function NavMenu() {
 	
 	return (
 		<>
-			<h1 className="text-xl font-bold"><Link href='/'>F E E D cast</Link></h1>
+			<h1 className="text-xl font-bold"><Link href='/'>Feedr</Link></h1>
 			<ul>
 				<NavLinks />
 			</ul>

@@ -1,4 +1,4 @@
-import PageHeader from "@/components/PageHeader";
+import PageHeader from "@/components/pages/PageHeader";
 
 export default function CastPage({ params }: {
   params: { username: string, castHash: string }

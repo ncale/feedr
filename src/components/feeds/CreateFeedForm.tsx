@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 import { useProfile } from "@farcaster/auth-kit";
+import { feedsApiUrl } from "@/utils/config";
 
 export default function CreateFeedForm() {
 	
@@ -23,9 +24,14 @@ export default function CreateFeedForm() {
 		event.preventDefault()
 		setIsLoading(true);
 		const feed = {
-			 feedName, fid, isDefault: false, isPrivate, channels, numConnections
+			feedName: feedName, 
+			authorFid: fid, 
+			isDefault: false, 
+			isPrivate: isPrivate, 
+			channels: [channels], 
+			numConnections: 1
 		}
-		const res = await fetch('/api/feeds', {
+		const res = await fetch(feedsApiUrl, {
 			method: 'POST',
 			headers: {'Content-Type': 'application/json'},
 			body: JSON.stringify(feed)
