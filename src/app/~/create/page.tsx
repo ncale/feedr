@@ -1,4 +1,4 @@
-import CreateFeedForm from "@/components/feeds/CreateFeedForm";
+import CreateFeedForm from "@/components/feedList/CreateFeedForm";
 import PageHeader from "@/components/pages/PageHeader";
 
 export default function CreatePage() {

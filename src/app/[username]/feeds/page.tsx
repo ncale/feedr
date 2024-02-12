@@ -1,6 +1,6 @@
 import Link from "next/link";
 import PageHeader from "@/components/pages/PageHeader";
-import FeedList from "@/components/feeds/FeedList";
+import FeedList from "@/components/feedList/FeedList";
 import { feedsApiUrl } from "@/utils/config";
 import { FeedDocument } from "@/models/feed";
 
