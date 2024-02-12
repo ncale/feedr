@@ -1,9 +1,25 @@
 import mongoose from "mongoose";
 
+export interface FeedInput {
+	feedName: string
+	feedDescription: string
+	isPrivate: string
+	channels: string[]
+};
+
+export interface FeedDocument extends FeedInput, mongoose.Document {
+	authorFid: number
+	isDefault: boolean
+}
+
 const feedSchema = new mongoose.Schema({
 	feedName: {
 		type: String,
 		required: true,
+	},
+	feedDescription: {
+		type: String,
+		required: false,
 	},
 	authorFid: {
 		type: Number,
@@ -13,19 +29,12 @@ const feedSchema = new mongoose.Schema({
 	isDefault: {
 		type: Boolean,
 		default: false,
-		// only one default per FID
 	},
 	isPrivate: {
 		type: Boolean,
 		default: false,
 	},
 	channels: [String],
-	numConnections: {
-		type: Number,
-		min: 1,
-	}
 });
 
-export type Feed = mongoose.InferSchemaType<typeof feedSchema>
-
-export default mongoose.model<Feed>('Feed', feedSchema);
+export default mongoose.model<FeedDocument>('Feed', feedSchema);
