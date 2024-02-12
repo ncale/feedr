@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Roboto } from "next/font/google";
 import "./globals.css";
 import NavMenu from "@/components/nav/NavMenu";
 import AuthButton from "@/components/auth/AuthButton";
@@ -7,7 +7,7 @@ import AuthKitProvider from '@/components/auth/AuthKitProvider';
 import { getServerSession } from "next-auth";
 import SessionProvider from '@/components/auth/SessionProvider';
 
-const inter = Inter({ subsets: ["latin"] });
+const font = Roboto({ subsets: ["latin"], weight: "400" });
 export const metadata: Metadata = {
   title: 'Feedcast',
   description: 'A Farcaster application for intentional social media.',
@@ -46,7 +46,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body className={`${inter.className} box-border h-screen min-h-screen`}>
+      <body className={`${font.className} box-border h-screen min-h-screen`}>
         <SessionProvider session={session}><AuthKitProvider config={config}>
           <div className="flex justify-center items-start">
             
