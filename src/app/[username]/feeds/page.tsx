@@ -4,6 +4,7 @@ import FeedList from "@/components/feeds/FeedList";
 import { feedsApiUrl } from "@/utils/config";
 import { FeedDocument } from "@/models/feed";
 
+
 async function getFeeds(): Promise<{ feeds: FeedDocument[] }> {
   const res = await fetch(feedsApiUrl, { 
     method: 'GET', 
@@ -14,7 +15,7 @@ async function getFeeds(): Promise<{ feeds: FeedDocument[] }> {
 };
 
 export default async function MyFeedsPage({ params }: { params: { username: string } }) {
-  
+
   const { feeds } = await getFeeds();
 
   return (
@@ -22,12 +23,12 @@ export default async function MyFeedsPage({ params }: { params: { username: stri
       <PageHeader pageTitle="Feeds" isProfile={true} />
       <div className="flex flex-col p-2">
         <div className="flex justify-between mb-2 text-white">
-          <div className="border-2 border-black rounded">
-            <button className="px-6 bg-purple-800 opacity-60 hover:opacity-100 ease-in border-r-2 border-black"><span className="text-sm font-bold">All</span></button>
-            <button className="px-6 bg-purple-800 opacity-60 hover:opacity-100 ease-in border-r-2 border-black"><span className="text-sm font-bold">Favorite</span></button>
-            <button className="px-6 bg-purple-800 opacity-60 hover:opacity-100 ease-in"><span className="text-sm font-bold">Mine</span></button>
+          <div className="">
+            <button className="px-6 mr-1 rounded bg-purple-800 opacity-60 hover:opacity-100"><span className="text-sm font-bold">All</span></button>
+            <button className="px-6 mr-1 rounded bg-purple-800 opacity-60 hover:opacity-100"><span className="text-sm font-bold">Favorite</span></button>
+            <button className="px-6 mr-1 rounded bg-purple-800 opacity-60 hover:opacity-100"><span className="text-sm font-bold">Mine</span></button>
           </div>
-          <Link className="px-6 bg-purple-800 ease-in border-2 border-black rounded opacity-60 hover:opacity-100" href='/~/create'><span className="text-sm font-bold">+ Create</span></Link>
+          <Link className="px-6 bg-purple-800 rounded opacity-60 hover:opacity-100" href='/~/create'><span className="text-sm font-bold">+ Create</span></Link>
         </div>
 
         <FeedList feeds={feeds} />
