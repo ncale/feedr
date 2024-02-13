@@ -1,46 +1,20 @@
 import neynarClient from "@/utils/neynar";
-import { FeedType, FilterType } from "@neynar/nodejs-sdk";
-import CastComponent from "./CastComponent";
+import { CastWithInteractions, FeedResponse } from "@neynar/nodejs-sdk/build/neynar-api/v2";
+import CastList from "./CastList";
 import { FeedDocument } from "@/models/feed";
-import { feedsApiUrl } from "@/utils/config";
-import { Cast } from "@neynar/nodejs-sdk/build/neynar-api/v2";
 
-async function getFeedMetadata(feedId: string): Promise<FeedDocument> {
-	const res = await fetch(`${feedsApiUrl}?feed-id=${feedId}`, { 
-    method: 'GET', 
-    headers: {"Content-Type": "application/json"}, 
-    next: {revalidate: 15} 
-  });
-	return res.json();
-}
-
-async function getFeedCasts(parentUrl: string): Promise<{ casts: Cast[] }> {
-	const res = await neynarClient.fetchFeed(FeedType.Filter, {
-		filterType: FilterType.ParentUrl,
-		parentUrl: parentUrl
-	})
+async function getFeedCasts(channels: string[]): Promise<{ casts: CastWithInteractions[] }> {
+	const res: FeedResponse = await neynarClient.fetchFeedByChannelIds(channels, {withRecasts: true, withReplies: true, limit: 30})
 	return res;
 }
 
-export default async function Feed( props: { feedId: FeedDocument['_id'] } ) {
+export default async function Feed( { feed }: { feed: FeedDocument } ) {
 	
-	const feedData = await getFeedMetadata(props.feedId);
-	
-	let castList: Cast[] = []
-
-	switch (feedData.channelIds.length) {
-		case 0:
-			break
-		case 1:
-			const { casts } = await getFeedCasts(feedData.channelIds[0])
-			castList.concat(casts);
-	}
-
-	//castList = await getFeedCasts();
+	const { casts } = await getFeedCasts(feed.channels);
 
 	return (
-		<div>
-			<CastComponent />
+		<div className="">
+			<CastList casts={casts} />
 		</div>
 	)
 }
