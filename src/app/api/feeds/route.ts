@@ -20,10 +20,14 @@ export async function POST(req: NextRequest) {
 export async function GET(req: NextRequest) {
 	try {
 		// Extract the user's fid from the request
-		// const fid = req.url
+		const url = new URL(req.url);
+		let feedId: string = '';
+		let fid: string = '';
+		if (url.searchParams.has("feed-id")) {feedId = url.searchParams.get("feed-id") || ''};
+		if (url.searchParams.has("user-fid")) {fid = url.searchParams.get("user-fid") || ''};
 		// Query Mongo DB
 		await runMongo();
-		const feeds = await Feed.find();
+		const feeds = await Feed.find({ $or: [{authorFid: fid}, {_id: feedId}]});
 		// Return the result
 		return NextResponse.json({ feeds: feeds }, { status: 201 });
 	} catch (err) {
