@@ -1,11 +1,6 @@
 import Profile from "../profile/Profile"
 
-type PageHeaderProps = {
-	pageTitle: string
-	isProfile: boolean
-}
-
-export default function PageHeader({pageTitle, isProfile=false}: PageHeaderProps) {
+export default function PageHeader({ pageTitle, isProfile=false }: { pageTitle: string, isProfile?: boolean }) {
 	return (
 		<div>
 			<div className="p-2 border-b-2 border-black border-opacity-50">
