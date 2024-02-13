@@ -6,7 +6,7 @@ import { FeedDocument } from "@/models/feed";
 
 
 async function getMyFeeds(userFid: number): Promise<{ feeds: FeedDocument[] }> {
-  const res = await fetch(`${feedsApiUrl}/?user-fid=${userFid}`, { 
+  const res = await fetch(`${feedsApiUrl}?user-fid=${userFid}`, { 
     method: 'GET', 
     headers: {"Content-Type": "application/json"}, 
     next: {revalidate: 15} 
