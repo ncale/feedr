@@ -10,14 +10,14 @@ export default function NavLinks() {
   } = useProfile();
 
 	return isAuthenticated ? (
-		<>
+		<ul>
 			<li><Link href={`/${username}`}>profile</Link></li>
 			<li><Link href={`/${username}/feeds`}>my feeds</Link></li>
 			<li><Link href='/~/explore'>explore</Link></li>
-		</>
+		</ul>
 	) : (
-		<>
+		<ul>
 			<li><Link href='/~/explore'>explore</Link></li>
-		</>
+		</ul>
 	)
 }
