@@ -17,12 +17,12 @@ export default async function FeedPage({ params }: { params: { feedId: string } 
 	const { feed } = await getFeedMetadata(params.feedId);
 	
 	return (
-		<div className="flex flex-col">
+		<>
 			<PageHeader pageTitle={feed.feedName} />
-			<div>
+			<div className="page-body">
 				<Feed feed={feed} />
 			</div>
-		</div>
+		</>
 	)
 }
   

@@ -46,19 +46,19 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body className={`${font.className} box-border h-screen min-h-screen`}>
+      <body className={`${font.className} box-border h-screen min-h-screen bg-white`}>
         <SessionProvider session={session}><AuthKitProvider config={config}>
           <div className="flex justify-center items-start">
             
             {/* Side Bar */}
-            <nav className="w-40 h-screen">
+            <nav className="w-40 relative h-screen">
               <div className="p-2 px-4">
                 <NavMenu />
               </div>
             </nav>
 
             {/* Main Page */}
-            <main className="w-5/12 h-screen border-x-2 border-black border-opacity-50">
+            <main className="page h-screen relative overflow-hidden border-x-2 border-black border-opacity-50">
               {children}
             </main>
 
