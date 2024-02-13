@@ -5,8 +5,8 @@ import { feedsApiUrl } from "@/utils/config";
 import { FeedDocument } from "@/models/feed";
 
 
-async function getFeeds(): Promise<{ feeds: FeedDocument[] }> {
-  const res = await fetch(feedsApiUrl, { 
+async function getMyFeeds(userFid: number): Promise<{ feeds: FeedDocument[] }> {
+  const res = await fetch(`${feedsApiUrl}/?user-fid=${userFid}`, { 
     method: 'GET', 
     headers: {"Content-Type": "application/json"}, 
     next: {revalidate: 15} 
@@ -16,7 +16,7 @@ async function getFeeds(): Promise<{ feeds: FeedDocument[] }> {
 
 export default async function MyFeedsPage({ params }: { params: { username: string } }) {
 
-  const { feeds } = await getFeeds();
+  const { feeds } = await getMyFeeds(20542); // adding a temporary value
 
   return (
     <div className="flex flex-col">
