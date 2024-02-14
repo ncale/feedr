@@ -1,10 +1,12 @@
 import neynarClient from "@/utils/neynar";
 import { CastWithInteractions, FeedResponse } from "@neynar/nodejs-sdk/build/neynar-api/v2";
-import CastList from "./CastList";
+import CastList from "../casts/CastList";
 import { FeedDocument } from "@/models/feed";
+import { FeedContext } from "../../../services/feedContext";
 
-async function getFeedCasts(channels: string[]): Promise<{ casts: CastWithInteractions[] }> {
-	const res: FeedResponse = await neynarClient.fetchFeedByChannelIds(channels, {withRecasts: true, withReplies: true, limit: 30})
+async function getFeedCasts(channels: { id: string, url: string }[]): Promise<{ casts: CastWithInteractions[] }> {
+	const channelIds = channels.map((channel) => {return channel.id});
+	const res: FeedResponse = await neynarClient.fetchFeedByChannelIds(channelIds, {withRecasts: true, withReplies: true, limit: 30})
 	return res;
 }
 
@@ -14,7 +16,9 @@ export default async function Feed( { feed }: { feed: FeedDocument } ) {
 
 	return (
 		<div className="">
-			<CastList casts={casts} />
+			<FeedContext.Provider value={feed}>
+				<CastList casts={casts} />
+			</FeedContext.Provider>
 		</div>
 	)
 }

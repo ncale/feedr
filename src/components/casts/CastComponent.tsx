@@ -1,12 +1,10 @@
 'use client';
 
 import Image from "next/image";
-import { EmbeddedCast } from "@neynar/nodejs-sdk/build/neynar-api/v2";
-import { EmbedUrl } from "@neynar/nodejs-sdk/build/neynar-api/v2";
 import { CastWithInteractions } from "@neynar/nodejs-sdk/build/neynar-api/v2";
 import { IconContext } from "react-icons";
 import { TbActivityHeartbeat } from "react-icons/tb";
-
+import ChannelPill from "./ChannelPill";
 
 export default function CastComponent({ cast }: { cast: CastWithInteractions }) {
 	
@@ -44,6 +42,7 @@ export default function CastComponent({ cast }: { cast: CastWithInteractions }) 
 				</div>
 				<div>
 					{/* channel pill */}
+					{cast.parent_hash ?? (<ChannelPill channelUrl={cast.parent_hash || ''} />)}
 				</div>
 				<div>
 					{/* reactions bar */}

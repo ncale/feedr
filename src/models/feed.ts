@@ -1,10 +1,11 @@
 import mongoose from "mongoose";
+import { Channel } from "@neynar/nodejs-sdk/build/neynar-api/v2";
 
 export interface FeedInput {
 	feedName: string
 	feedDescription: string
-	isPrivate: string
-	channels: string[]
+	isPrivate: boolean
+	channels: Channel[]
 };
 
 export interface FeedDocument extends FeedInput, mongoose.Document {
@@ -34,7 +35,10 @@ const feedSchema = new mongoose.Schema({
 		type: Boolean,
 		default: false,
 	},
-	channels: [String],
+	channels: [{
+		id: String,
+		url: String
+	}],
 });
 
 export default mongoose.model<FeedDocument>('Feed', feedSchema);
